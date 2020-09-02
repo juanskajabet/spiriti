@@ -19,6 +19,8 @@ public class Inventario {
         // TODO code application logic here
         Loguin lg = new Loguin();
         lg.setVisible(true);
+        System.out.println("hola mundo");
+        
     }
     
 }
