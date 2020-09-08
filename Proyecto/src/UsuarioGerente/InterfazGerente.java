@@ -224,15 +224,13 @@ public class InterfazGerente extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Codigo del vino", "Descripcion", "En stock"
             }
         ));
+        jTable2.setGridColor(new java.awt.Color(102, 102, 255));
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
