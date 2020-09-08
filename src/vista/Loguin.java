@@ -5,18 +5,33 @@
  */
 package vista;
 
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+import java.util.Date;
+
 /**
  *
  * @author JuanFran
  */
 public class Loguin extends javax.swing.JFrame {
-
+ Date fecha = new Date();
     /**
      * Creates new form Loguin
      */
     public Loguin() {
         initComponents();
         setLocationRelativeTo(null);
+      
+        Month mes = LocalDate.now().getMonth();
+        int a = LocalDate.now().getYear();
+         Et_Mes.setText(mes.toString());
+         Et_dia.setText(fecha.getDay()-1+"");
+         Et_año.setText(fecha.getYear()+1900+"");
+       
+        
     }
 
     /**
@@ -44,7 +59,10 @@ public class Loguin extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         bt_ingreso = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        B_Cerrar = new javax.swing.JLabel();
+        Et_año = new javax.swing.JLabel();
+        Et_Mes = new javax.swing.JLabel();
+        Et_dia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -95,7 +113,7 @@ public class Loguin extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setText("Iniciar Sesión");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 200, 80));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 200, 80));
 
         jPanel4.setBackground(new java.awt.Color(137, 140, 149));
 
@@ -133,6 +151,16 @@ public class Loguin extends javax.swing.JFrame {
         });
 
         bt_ingreso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bt_Ingresar (1).png"))); // NOI18N
+        bt_ingreso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ingresoMouseClicked(evt);
+            }
+        });
+        bt_ingreso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bt_ingresoKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -201,16 +229,31 @@ public class Loguin extends javax.swing.JFrame {
         jLabel6.setText("Ya tienes una cuenta? Inicia sesión");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("X");
-        jLabel7.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        B_Cerrar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        B_Cerrar.setForeground(new java.awt.Color(255, 255, 255));
+        B_Cerrar.setText("X");
+        B_Cerrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        B_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                B_CerrarMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
+        jPanel3.add(B_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
+
+        Et_año.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Et_año.setForeground(new java.awt.Color(240, 240, 240));
+        Et_año.setText("Año");
+        jPanel3.add(Et_año, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 60, 20));
+
+        Et_Mes.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        Et_Mes.setForeground(new java.awt.Color(240, 240, 240));
+        Et_Mes.setText("MES");
+        jPanel3.add(Et_Mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 150, 50));
+
+        Et_dia.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
+        Et_dia.setForeground(new java.awt.Color(240, 240, 240));
+        Et_dia.setText("Día");
+        jPanel3.add(Et_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, 50));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 340, 600));
 
@@ -235,9 +278,9 @@ int xx,xy;
     
     }//GEN-LAST:event_jPanel3MouseDragged
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void B_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_CerrarMouseClicked
        this.dispose();
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_B_CerrarMouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
@@ -253,6 +296,18 @@ int xx,xy;
     int y=evt.getYOnScreen();
     this.setLocation(x-xx,y-xy);
     }//GEN-LAST:event_formMouseDragged
+
+    private void bt_ingresoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bt_ingresoKeyPressed
+       
+        
+        
+    }//GEN-LAST:event_bt_ingresoKeyPressed
+
+    private void bt_ingresoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ingresoMouseClicked
+         VInicio ventana = new VInicio();
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bt_ingresoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,6 +345,10 @@ int xx,xy;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel B_Cerrar;
+    private javax.swing.JLabel Et_Mes;
+    private javax.swing.JLabel Et_año;
+    private javax.swing.JLabel Et_dia;
     private javax.swing.JLabel bt_ingreso;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
@@ -298,7 +357,6 @@ int xx,xy;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
